@@ -1,7 +1,7 @@
 package com.fulfilment.application.monolith.warehouses.domain.ports;
 
-import com.fulfilment.application.monolith.warehouses.domain.models.Warehouse;
+import com.fulfilment.application.monolith.warehouses.domain.models.WarehouseDTO;
 
 public interface CreateWarehouseOperation {
-  void create(Warehouse warehouse);
+  void create(WarehouseDTO warehouseDTO);
 }

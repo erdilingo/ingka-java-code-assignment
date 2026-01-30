@@ -1,13 +1,21 @@
 package com.fulfilment.application.monolith.warehouses.domain.ports;
 
-import com.fulfilment.application.monolith.warehouses.domain.models.Warehouse;
+import com.fulfilment.application.monolith.warehouses.domain.models.WarehouseDTO;
+
+import java.util.List;
 
 public interface WarehouseStore {
-  void create(Warehouse warehouse);
+  void create(WarehouseDTO warehouseDTO);
 
-  void update(Warehouse warehouse);
+  void update(WarehouseDTO warehouseDTO);
 
-  void remove(Warehouse warehouse);
+  void remove(WarehouseDTO warehouseDTO);
 
-  Warehouse findByBusinessUnitCode(String buCode);
+  WarehouseDTO findByBusinessUnitCode(String buCode);
+
+  List<WarehouseDTO> findActiveByLocation(String location);
+
+  List<WarehouseDTO> findAllActiveWarehouses();
+
+  int getTotalCapacityByLocation(String location);
 }

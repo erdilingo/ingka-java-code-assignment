@@ -2,7 +2,7 @@ package com.fulfilment.application.monolith.warehouses.domain.models;
 
 import java.time.ZonedDateTime;
 
-public class Warehouse {
+public class WarehouseDTO {
 
   // unique identifier
   public String businessUnitCode;

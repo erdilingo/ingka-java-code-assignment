@@ -1,7 +1,7 @@
 package com.fulfilment.application.monolith.warehouses.domain.ports;
 
-import com.fulfilment.application.monolith.warehouses.domain.models.Location;
+import com.fulfilment.application.monolith.warehouses.domain.models.LocationDTO;
 
 public interface LocationResolver {
-  Location resolveByIdentifier(String identifier);
+  LocationDTO resolveByIdentifier(String identifier);
 }

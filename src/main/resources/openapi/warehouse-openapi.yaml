@@ -52,6 +52,30 @@ paths:
                 $ref: '#/components/schemas/Warehouse'
         '404':
           description: Warehouse unit not found
+    put:
+      summary: Replace a warehouse unit by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the warehouse unit to replace
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Warehouse'
+      responses:
+        '200':
+          description: Warehouse unit replaced
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Warehouse'
+        '404':
+          description: Warehouse unit not found
     delete:
       summary: Archive a warehouse unit by ID
       parameters:

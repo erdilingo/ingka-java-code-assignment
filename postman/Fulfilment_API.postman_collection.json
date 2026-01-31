@@ -1,0 +1,190 @@
+{
+  "info": {
+    "name": "Fulfilment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "List all products",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/product"
+          }
+        },
+        {
+          "name": "Get product by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/product/1"
+          }
+        },
+        {
+          "name": "Create product",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/product",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"BILLY\",\n  \"description\": \"Bookcase\",\n  \"price\": 59.99,\n  \"stock\": 25\n}"
+            }
+          }
+        },
+        {
+          "name": "Update product",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/product/1",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"BILLY Updated\",\n  \"description\": \"Updated bookcase\",\n  \"price\": 69.99,\n  \"stock\": 30\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete product",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/product/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Store",
+      "item": [
+        {
+          "name": "List all stores",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stores"
+          }
+        },
+        {
+          "name": "Get store by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/stores/1"
+          }
+        },
+        {
+          "name": "Create store",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stores",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ROTTERDAM\",\n  \"quantityProductsInStock\": 50\n}"
+            }
+          }
+        },
+        {
+          "name": "Update store",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/stores/1",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ROTTERDAM Updated\",\n  \"quantityProductsInStock\": 75\n}"
+            }
+          }
+        },
+        {
+          "name": "Patch store",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/stores/1",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ROTTERDAM Patched\",\n  \"quantityProductsInStock\": 60\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete store",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/stores/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Warehouse",
+      "item": [
+        {
+          "name": "List all warehouses",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/warehouse"
+          }
+        },
+        {
+          "name": "Get warehouse by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/warehouse/MWH.001"
+          }
+        },
+        {
+          "name": "Create warehouse",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/warehouse",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"MWH.099\",\n  \"location\": \"AMSTERDAM-001\",\n  \"capacity\": 40,\n  \"stock\": 10\n}"
+            }
+          }
+        },
+        {
+          "name": "Replace warehouse",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/warehouse/MWH.001",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"ZWOLLE-001\",\n  \"capacity\": 35,\n  \"stock\": 10\n}"
+            }
+          }
+        },
+        {
+          "name": "Archive warehouse",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/warehouse/MWH.001"
+          }
+        }
+      ]
+    }
+  ]
+}

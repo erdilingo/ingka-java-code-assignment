@@ -1,7 +1,9 @@
-package com.fulfilment.application.monolith.warehouses.adapters.restapi;
+package com.fulfilment.application.monolith.exceptions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fulfilment.application.monolith.fulfillment.domain.exceptions.FulfillmentNotFoundException;
+import com.fulfilment.application.monolith.fulfillment.domain.exceptions.FulfillmentValidationException;
 import com.fulfilment.application.monolith.warehouses.domain.exceptions.WarehouseNotFoundException;
 import com.fulfilment.application.monolith.warehouses.domain.exceptions.WarehouseValidationException;
 import jakarta.inject.Inject;
@@ -11,9 +13,9 @@ import jakarta.ws.rs.ext.Provider;
 import org.jboss.logging.Logger;
 
 @Provider
-public class WarehouseExceptionMapper implements ExceptionMapper<Exception> {
+public class GlobalExceptionMapper implements ExceptionMapper<Exception> {
 
-  private static final Logger LOG = Logger.getLogger(WarehouseExceptionMapper.class);
+  private static final Logger LOG = Logger.getLogger(GlobalExceptionMapper.class);
 
   @Inject
   ObjectMapper objectMapper;
@@ -23,9 +25,9 @@ public class WarehouseExceptionMapper implements ExceptionMapper<Exception> {
     int code = mapToStatusCode(exception);
 
     if (code == Response.Status.INTERNAL_SERVER_ERROR.getStatusCode()) {
-      LOG.error("Unexpected error handling warehouse request", exception);
+      LOG.error("Unexpected error handling request", exception);
     } else {
-      LOG.warnf("Warehouse request failed with status %d: %s", code, exception.getMessage());
+      LOG.warnf("Request failed with status %d: %s", code, exception.getMessage());
     }
 
     ObjectNode body = objectMapper.createObjectNode();
@@ -44,6 +46,12 @@ public class WarehouseExceptionMapper implements ExceptionMapper<Exception> {
     }
     if (exception instanceof WarehouseValidationException) {
       return Response.Status.BAD_REQUEST.getStatusCode();
+    }
+    if (exception instanceof FulfillmentNotFoundException) {
+      return Response.Status.NOT_FOUND.getStatusCode();
+    }
+    if (exception instanceof FulfillmentValidationException) {
+      return Response.Status.CONFLICT.getStatusCode();
     }
     if (exception instanceof jakarta.ws.rs.WebApplicationException wae) {
       return wae.getResponse().getStatus();

@@ -185,6 +185,53 @@
           }
         }
       ]
+    },
+    {
+      "name": "Fulfillment",
+      "item": [
+        {
+          "name": "List all fulfillments",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fulfillment"
+          }
+        },
+        {
+          "name": "List fulfillments by store",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fulfillment/store/1"
+          }
+        },
+        {
+          "name": "List fulfillments by warehouse",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/fulfillment/warehouse/1"
+          }
+        },
+        {
+          "name": "Create fulfillment",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fulfillment",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"warehouseId\": 1,\n  \"productId\": 1,\n  \"storeId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete fulfillment",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/fulfillment/1"
+          }
+        }
+      ]
     }
   ]
 }
